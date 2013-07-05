@@ -82,8 +82,8 @@ Changelog:
 17.06.2013 **remote monitoring** now available via additional ASM instance, configured per start params      
 18.06.2013 Amount of allocated physical memory in [GB], **MEM** added      
 04.07.2013 graphs for player number adapted from 50 to 100    
-05.07.2013 history graph extd., from 200 to 800 samples, more dynamical history      
+05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)      
 
-    
+   
 
  

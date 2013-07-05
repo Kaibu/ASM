@@ -23,7 +23,7 @@ link9[] = {5,0};
 link10[] = {7,6};
 link11[] = {8,0};
 globals[] = {25.000000,1,0,0,0,640,480,1,16,6316128,1,-214.054855,203.709671,-197.761230,-660.493469,864,957,1};
-window[] = {2,-1,-1,-1,-1,814,22,1462,22,3,881};
+window[] = {2,-1,-1,-1,-1,968,176,1616,176,3,881};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -89,7 +89,7 @@ class FSM
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextFPS)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""0:%1:%2"", round (diag_fps*1000),round (diag_minfps*1000)];" \n
+          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""0:%1:%2"", round (diag_fps*1000),round (diag_fpsmin*1000)];" \n
            "_NextFPS = diag_TickTime +  _INTERVAL_FPS;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

@@ -67,7 +67,6 @@ That means it starts as monitoring client and tries periodical to connect/read t
 (If your server is firewall protected, you have to open TCP port on server)
 
 **If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
-**To use ASM with pre A3 versions, you have to start fn_ASM.fsm from init.sqf in each of your mission files**     
 
 *ENJOY :)*     
 
@@ -82,6 +81,9 @@ Changelog:
 13.06.2013 running DS as **service** now merged in default build (custom build removed)    
 17.06.2013 **remote monitoring** now available via additional ASM instance, configured per start params      
 18.06.2013 Amount of allocated physical memory in [GB], **MEM** added      
-04.07.2013 graphs for player number adapted from 50 to 100        
+04.07.2013 graphs for player number adapted from 50 to 100    
+05.07.2013 history graph extd., from 200 to 800 samples, more dynamical history      
+
+    
 
  

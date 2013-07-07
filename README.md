@@ -40,8 +40,7 @@ Lets say we have an CPS value of 10.0 condition evaluations per second, then our
 In a second scenario we have a value of 0.3 CPS, what means AI has a **minimal** response delay larger than 3 seconds !!!    
 Especially COOP missions running with such low **CPS** are really no pleasure. AI seems to be "stupid".   
 
-(If low CPS values occurs together with normal FPS values, I'd recommend to have a talk with the mission developer,    
-because this behavior is very likely caused by **excessively** use of **execVM**, **spawn** etc.)    
+(If low CPS values occurs together with normal FPS values, I'd recommend to have a talk with the mission developer, because this behavior is very likely caused by **excessively** use of **execVM**, **spawn** etc.)    
 
 
 **How to use ASM:**
@@ -55,7 +54,7 @@ Run `ArmaServerMonitor.exe` from what directory you want, to monitor all your se
 (use right mouse button for popup menus)     
 
 **Additional**, it is now possible to **connect** to `Arma Server Monitor` **from remote**.   
-To do that, you need `ArmaServerMonitor.exe` on the remote device too and configure it per start params.
+To do that, you need `ArmaServerMonitor.exe` on the remote device too and configure it per start params.   
 Default start params for `ArmaServerMonitor.exe` are: `-server -n1 -h127.0.0.1 -p24000`   
 This means, it starts per default as monitoring server and listens at TCP port 24000, max. allowed clients = 1.
 

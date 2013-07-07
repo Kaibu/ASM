@@ -42,6 +42,9 @@ Especially COOP missions running with such low **CPS** are really no pleasure. A
 
 (If low CPS values occurs together with normal FPS values, I'd recommend to have a talk with the mission developer, because this behavior is very likely caused by **excessively** use of **execVM**, **spawn** etc.)    
 
+Additional to the history graph of FPS values, now the value FPSmin is drawed as a graph.
+By watching this graphs you can **easily spot lags** on your server, without being in game.
+
 
 **How to use ASM:**
 

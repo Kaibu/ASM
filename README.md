@@ -15,12 +15,13 @@ Propertys:
 
 Currently able to monitor the following values:
 
+	- PID (process ID of the server instance)
 	- MEM (Amount of allocated physical memory)
-	- FPS (on a server this means simulation frames per second)
-	- CPS (Condition-evaluation Per Second)
+	- FPS (on a server this means simulation cycles per second)
+	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
+	- CPS (Condition-evaluation per Second)
 	- PL# (Number of alive player units)
 	- AI# (Number of alive local AI units)
-	- PID (process ID of the server instance)
 	- Name of the currently played mission (missionName)
 
 **Arma Server Monitor** consists of 3 components:
@@ -42,7 +43,7 @@ Especially COOP missions running with such low **CPS** are really no pleasure. A
 
 (If low CPS values occurs together with normal FPS values, I'd recommend to have a talk with the mission developer, because this behavior is very likely caused by **excessively** use of **execVM**, **spawn** etc.)    
 
-Additional to the history graph of FPS values, now the value FPSmin is drawed as a graph.
+Additional to the history graph of FPS values, now the value **FPSmin** is drawed as a graph.
 By watching this graphs you can **easily spot lags** on your server, without being in game.
 
 

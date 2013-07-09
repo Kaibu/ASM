@@ -32,7 +32,7 @@ Currently able to monitor the following values:
 
 
 Alongside to the well known FPS (frames per second), an very interesting value **CPS** is introduced here.    
-**CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `ASM.fsm`.   
+**CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`.   
 
 You can realize this **CPS** value as the reciprocal of the current "minimal response delay" of AI in the running mission.    
 

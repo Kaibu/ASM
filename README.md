@@ -89,7 +89,7 @@ Changelog (always replace ALL related files):
 04.07.2013 graphs for player number adapted from 50 to 100    
 05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)     
 09.07.2013 some performance related improvements          
-11.07.2013 profilName now displayed additional to missionName, forced=1 replaced by preInit=1 () in cfgFunctions      
+11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
 
    
 

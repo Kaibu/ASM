@@ -75,7 +75,7 @@ That means it starts as monitoring client and tries periodical to connect/read t
 
 *ENJOY :)*     
 
-Changelog (always replace ALL related files):    
+Changelog:    
 01.06.2013 Changed the install/launch method to **mini-addon** (thanks terox for inspiration)    
 01.06.2013 Fixed: instance occupied additional slot at mission change    
 02.06.2013 Changed bar graphs for CPS & FPS to **logarithmic scale** to show states more intuitive   
@@ -90,7 +90,3 @@ Changelog (always replace ALL related files):
 05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)     
 09.07.2013 some performance related improvements          
 11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
-
-   
-
- 

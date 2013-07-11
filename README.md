@@ -23,6 +23,7 @@ Currently able to monitor the following values:
 	- PL# (Number of alive player units)
 	- AI# (Number of alive local AI units)
 	- Name of the currently played mission (missionName)
+	- Name of the instance profile (profileName)
 
 **Arma Server Monitor** consists of 3 components:
 

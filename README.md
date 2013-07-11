@@ -69,11 +69,12 @@ Example for client configuration:
 That means it starts as monitoring client and tries periodical to connect/read to/from your monitoring server at 201.178.1.102:24000.   
 (If your server is firewall protected, you have to open TCP port on server)
 
+
 **If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
 
 *ENJOY :)*     
 
-Changelog:    
+Changelog (always replace ALL related files):    
 01.06.2013 Changed the install/launch method to **mini-addon** (thanks terox for inspiration)    
 01.06.2013 Fixed: instance occupied additional slot at mission change    
 02.06.2013 Changed bar graphs for CPS & FPS to **logarithmic scale** to show states more intuitive   
@@ -86,8 +87,8 @@ Changelog:
 18.06.2013 Amount of allocated physical memory in [GB], **MEM** added      
 04.07.2013 graphs for player number adapted from 50 to 100    
 05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)     
-09.07.2013 some performance related improvements, to update replace ALL related files (ASM.pbo, ASMdll.dll and ArmaServerMonitor.exe)     
- 
+09.07.2013 some performance related improvements          
+11.07.2013 profilName now displayed additional to missionName, forced=1 replaced by preInit=1 () in cfgFunctions      
 
    
 

@@ -3,9 +3,9 @@
 /*
 item0[] = {"wait",2,250,-75.000000,-350.000000,25.000000,-300.000000,0.000000,"wait"};
 item1[] = {"fps",4,218,50.000000,-350.000000,150.000000,-300.000000,0.000000,"fps"};
-item2[] = {"init",0,4346,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
+item2[] = {"init",0,250,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
 item3[] = {"first",4,218,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
-item4[] = {"units",4,218,-200.000000,-275.000000,-100.000000,-225.000000,2.000000,"units"};
+item4[] = {"units",4,4314,-200.000000,-275.000000,-100.000000,-225.000000,2.000000,"units"};
 item5[] = {"mission",4,218,-200.000000,-350.000000,-100.000000,-300.000000,3.000000,"mission"};
 item6[] = {"finit",1,250,-75.000000,-650.000000,25.000000,-600.000000,0.000000,"finit"};
 item7[] = {"already",4,218,-75.000000,-575.000000,25.000000,-525.000000,1.000000,"already"};
@@ -23,7 +23,7 @@ link9[] = {5,0};
 link10[] = {7,6};
 link11[] = {8,0};
 globals[] = {25.000000,1,0,0,0,640,480,1,16,6316128,1,-232.645370,222.300140,-177.169662,-681.085083,864,957,1};
-window[] = {2,-1,-1,-1,-1,902,110,1550,110,3,881};
+window[] = {2,-1,-1,-32000,-32000,1034,242,1682,242,3,881};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -59,8 +59,10 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextGen)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_Players = {(alive _x)&&(isPlayer _x)} count allUnits;" \n
            "_locAIs = {(alive _x)&&(local _x)} count allUnits;" \n
+           "_MissObj = count allMissionObjects """";" \n
            "" \n
-           """ASMdll"" callExtension format [""2:%1:%2"", _Players, _locAIs];" \n
+           "" \n
+           """ASMdll"" callExtension format [""2:%1:%2:%3"", _Players, _locAIs, _MissObj];" \n
            "_NextGen 	= diag_TickTime + _INTERVAL_GEN;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -102,6 +104,7 @@ class FSM
        "// Number of alive units impacting performance" \n
        "_Players = 0; // impacts FPS" \n
        "_locAIs = 0;  // impacts FCEF" \n
+       "_MissObj = 0; // number of all Mission objects" \n
        "" \n
        "// define the minimal time interval in seconds (_INTERVAL_FPS < _INTERVAL_CPS <_INTERVAL_GEN < _INTERVAL_MISS)" \n
        "_INTERVAL_FPS = 1;" \n

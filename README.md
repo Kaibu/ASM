@@ -16,7 +16,7 @@ Propertys:
 Currently able to monitor the following values:
 
 	- PID process ID of the server instance
-	- OBJ number of all objects in current mission (missionObjects)
+	- OBJ number of all objects in current mission (allMissionObjects)
 	- MEM Amount of allocated physical memory
 	- FPS (on a server this means simulation cycles per second)
 	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
@@ -91,4 +91,4 @@ Changelog:
 05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)     
 09.07.2013 some performance related improvements          
 11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
-15.07.2013 counter for all missionObjects added, helps to check if cleanup routines work                  
+15.07.2013 counter for allMissionObjects added, helps to check if cleanup routines works                  

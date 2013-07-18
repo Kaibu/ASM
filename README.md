@@ -86,7 +86,7 @@ Changelog:
 11.06.2013 Fixed: AI was not counted correctly    
 13.06.2013 running DS as **service** now merged in default build (custom build removed)    
 17.06.2013 **remote monitoring** now available via additional ASM instance, configured per start params      
-18.06.2013 Amount of allocated physical memory in [GB], **MEM** added      
+18.06.2013 Amount of allocated physical memory in [MB], **MEM** added      
 04.07.2013 graphs for player number adapted from 50 to 100    
 05.07.2013 history graph extd., better lag visualisation via FPSmin (popup menu)     
 09.07.2013 some performance related improvements          

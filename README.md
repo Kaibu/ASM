@@ -22,7 +22,8 @@ Currently able to monitor the following values:
 	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
 	- CPS Condition-evaluation per Second
 	- PL# Number of alive player units
-	- AI# Number of alive local AI units
+	- AIL Number of alive local AI units
+	- AIR Number of alive remote AI units
 	- Name of the currently played mission (missionName)
 	- Name of the instance profile (profileName)
 
@@ -92,6 +93,4 @@ Changelog:
 09.07.2013 some performance related improvements          
 11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
 15.07.2013 counter for allMissionObjects added, helps to check if cleanup routines works                  
-16.07.2013 object counting switchable, default off, change countobjects in asm.ini to 1 to activate          
-
-      
+31.07.2013 object counting interval, configurable in asm.ini, set *objectcountinterval=0* to deactivate (default)          

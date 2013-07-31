@@ -4,26 +4,29 @@
 item0[] = {"wait",2,250,-75.000000,-350.000000,25.000000,-300.000000,0.000000,"wait"};
 item1[] = {"fps",4,218,50.000000,-350.000000,150.000000,-300.000000,0.000000,"fps"};
 item2[] = {"init",0,250,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
-item3[] = {"first",4,218,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
-item4[] = {"units",4,218,-200.000000,-275.000000,-100.000000,-225.000000,2.000000,"units"};
-item5[] = {"mission",4,4314,-200.000000,-350.000000,-100.000000,-300.000000,3.000000,"mission"};
+item3[] = {"first",4,4314,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
+item4[] = {"units",4,218,-75.000000,-275.000000,25.000000,-225.000000,2.000000,"units"};
+item5[] = {"mission",4,218,-200.000000,-350.000000,-100.000000,-300.000000,4.000000,"mission"};
 item6[] = {"finit",1,250,-75.000000,-650.000000,25.000000,-600.000000,0.000000,"finit"};
 item7[] = {"already",4,218,-75.000000,-575.000000,25.000000,-525.000000,1.000000,"already"};
 item8[] = {"cps",4,218,50.000000,-275.000000,150.000000,-225.000000,1.000000,"cps"};
+item9[] = {"objects",4,218,-200.000000,-275.000000,-100.000000,-225.000000,3.000000,"objects"};
 link0[] = {0,1};
 link1[] = {0,4};
 link2[] = {0,5};
 link3[] = {0,8};
-link4[] = {1,0};
-link5[] = {2,3};
-link6[] = {2,7};
-link7[] = {3,0};
-link8[] = {4,0};
-link9[] = {5,0};
-link10[] = {7,6};
-link11[] = {8,0};
-globals[] = {25.000000,1,0,0,0,640,480,1,16,6316128,1,-274.937317,264.591980,-130.325668,-727.929321,864,957,1};
-window[] = {2,-1,-1,-1,-1,964,198,1220,198,3,881};
+link4[] = {0,9};
+link5[] = {1,0};
+link6[] = {2,3};
+link7[] = {2,7};
+link8[] = {3,0};
+link9[] = {4,0};
+link10[] = {5,0};
+link11[] = {7,6};
+link12[] = {8,0};
+link13[] = {9,0};
+globals[] = {25.000000,1,0,0,0,640,480,1,18,6316128,1,-226.963837,216.618301,-183.463211,-674.792053,864,957,1};
+window[] = {2,-1,-1,-32000,-32000,810,44,1066,44,3,881};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -42,13 +45,28 @@ class FSM
         /*%FSM<LINK "mission">*/
         class mission
         {
-          priority = 3.000000;
+          priority = 4.000000;
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextMiss)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if (_countObjects == ""1"") then {_MissObj = count allMissionObjects """";};" \n
-           """ASMdll"" callExtension format [""3:%1:%2"", _MissObj, missionName];" \n
+          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""3:%1"",  missionName];" \n
            "_NextMiss 	= diag_TickTime + _INTERVAL_MISS;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "objects">*/
+        class objects
+        {
+          priority = 3.000000;
+          to="wait";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_countObjects) then {" \n
+           "	_MissObj = count allMissionObjects ""All"";" \n
+           "	""ASMdll"" callExtension format [""4:%1"", _MissObj];" \n
+           "};" \n
+           "" \n
+           "_NextObj 	= diag_TickTime + _INTERVAL_OBJ;" \n
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -58,11 +76,15 @@ class FSM
           priority = 2.000000;
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextGen)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_Players = {(alive _x)&&(isPlayer _x)} count allUnits;" \n
-           "_locAIs = {(alive _x)&&(local _x)} count allUnits;" \n
-           """ASMdll"" callExtension format [""2:%1:%2"", _Players, _locAIs];" \n
-           "_NextGen 	= diag_TickTime + _INTERVAL_GEN;" \n
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextUni)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_units = allUnits;" \n
+           "" \n
+           "_Players = {(alive _x)&&(isPlayer _x)} count _units;" \n
+           "_locAIs = {(alive _x)&&(local _x)} count _units;" \n
+           "_remAIs = ({alive _x} count _units) - _Players - _locAIs;" \n
+           "" \n
+           """ASMdll"" callExtension format [""2:%1:%2:%3"", _Players, _locAIs, _remAIs];" \n
+           "_NextUni 	= diag_TickTime + _INTERVAL_UNI;" \n
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -97,8 +119,12 @@ class FSM
     {
       name = "init";
       init = /*%FSM<STATEINIT""">*/"diag_log (""ASM.fsm started"");" \n
+       "// options for ASM" \n
+       "_options = [];" \n
+       "" \n
        "// count Objects or not" \n
-       "_countObjects = ""0"";" \n
+       "_countObjects = false;" \n
+       "_countObjectsInterval = ""0"";" \n
        "" \n
        "// variable for counting the number of condition evaluations" \n
        "_c = 0;" \n
@@ -106,18 +132,23 @@ class FSM
        "// Number of alive units impacting performance" \n
        "_Players = 0; // impacts FPS" \n
        "_locAIs = 0;  // impacts FCEF" \n
+       "_remAIs = 0; // sum of all AI not local" \n
        "_MissObj = 0; // number of all Mission objects" \n
        "" \n
        "// define the minimal time interval in seconds (_INTERVAL_FPS < _INTERVAL_CPS <_INTERVAL_GEN < _INTERVAL_MISS)" \n
        "_INTERVAL_FPS = 1;" \n
        "_INTERVAL_CPS = 4;" \n
-       "_INTERVAL_GEN = 10;" \n
-       "_INTERVAL_MISS = 30;" \n
+       "_INTERVAL_UNI = 10;" \n
+       "_INTERVAL_OBJ = 30;" \n
+       "_INTERVAL_MISS = 60;" \n
        "" \n
        "_NextFPS = diag_TickTime;" \n
        "_NextCPS = diag_TickTime + 2;" \n
-       "_NextGen 	= diag_TickTime;" \n
-       "_NextMiss 	= diag_TickTime;"/*%FSM</STATEINIT""">*/;
+       "_NextUni 	= diag_TickTime;" \n
+       "_NextMiss 	= diag_TickTime;" \n
+       "_NextObj 	= diag_TickTime;" \n
+       "" \n
+       "_units =[];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -139,7 +170,9 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(isnil (""ASMRunning""))"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// register instance, occupy one MMF slot for PID" \n
-           "_countObjects = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
+           "_countObjectsInterval = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
+           "if (_countObjectsInterval == ""0"") then {_countObjects = false;} else {_countObjects = true; _INTERVAL_OBJ = parseNumber _countObjectsInterval};" \n
+           "" \n
            "ASMRunning = true;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

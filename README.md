@@ -4,6 +4,8 @@
 
 "Arma Server Monitor" is a spin-off of my experiments with the arma engine.
 
+----------
+
 Propertys:
 
 	- monitors up to 4 server (or headless client) instances simultaneous 
@@ -12,6 +14,8 @@ Propertys:
 	- almost no influence to cpu load
 	- easy to use (mini addon)
 	- customizable history graphs	
+
+----------
 
 Currently able to monitor the following values:
 
@@ -27,12 +31,15 @@ Currently able to monitor the following values:
 	- Name of the currently played mission (missionName)
 	- Name of the instance profile (profileName)
 
+----------
+
 **Arma Server Monitor** consists of 3 components:
 
 	fn_ASM.fsm 				- Reports some internal performance states from arma server (or HC)
 	ASMdll.dll 				- Interfaces to ArmaServerMonitor.exe via shared memory
 	ArmaServerMonitor.exe 	- The Monitor itself reads from MMF and displays the values
 
+----------
 
 Alongside to the well known FPS (frames per second), an very interesting value **CPS** is introduced here.    
 **CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`.   
@@ -48,6 +55,7 @@ Especially COOP missions running with such low **CPS** are really no pleasure. A
 Additional to the history graph of FPS values, now the value **FPSmin** is drawed as a graph.
 By watching this graphs you can **easily spot lags** on your server, without being in game.
 
+----------
 
 **How to use ASM:**
 
@@ -75,6 +83,8 @@ If your server is firewall protected, you have to open the selected TCP port on 
 **If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
 
 *ENJOY :)*     
+
+----------
 
 Changelog:    
 01.06.2013 Changed the install/launch method to **mini-addon** (thanks terox for inspiration)    

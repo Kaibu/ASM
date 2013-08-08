@@ -71,7 +71,7 @@ This means, ASM starts as monitoring server and listens at TCP port 24000, max. 
 
 Example for client configuration: `ArmaServerMonitor.exe -client -h201.178.1.102 -p24000`
 
-That means ASM starts as monitoring client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
+ASM starts as client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
 If your server is firewall protected, you have to open the selected TCP port on server.
 
 Just use the right mouse button over the history graphs, to configure the visibility of graphs (popup menu).

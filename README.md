@@ -41,7 +41,7 @@ Currently able to monitor the following values:
 	
 -------
 
-This tool is very helpful to monitor your server under load, to spot bad coded parts in your mission/mod in realtime.    
+This tool is very helpful to monitor your server under load, to spot bad coded parts in your mission/mod.    
 It will give you an impression, how well your server/mission scale with player/AI/object numbers.
 
 Additional to the history graph of FPS value, now the value **FPSmin** is drawed as a graph.
@@ -50,7 +50,7 @@ By watching this graphs you can **easily spot lags** on your server, without bei
 Alongside to the well known FPS (frames per second), an very interesting value **CPS** is introduced here.    
 **CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`. You can realize this **CPS** value as the reciprocal of the current "minimal response delay" of local AI in the running mission.    
 
-By watching the number of mission-objects (OBJ), you can check if your cleanup-routine is working well.    
+By watching the number of mission-objects **OBJ**, you can check if your cleanup-routine is working well.    
 ( to enable object counting, set *objectcountinterval* in asm.ini to a value > 0 [sec] )
 
 **Additional**, it is now possible to **connect** to `Arma Server Monitor` **from remote** via TCP.   
@@ -71,10 +71,10 @@ This means, ASM starts as monitoring server and listens at TCP port 24000, max. 
 
 Example for client configuration: `ArmaServerMonitor.exe -client -h201.178.1.102 -p24000`
 
-That means ASM starts as monitoring client and tries periodical to connect/read to/from your ASM  server at 201.178.1.102:24000.   
+That means ASM starts as monitoring client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
 If your server is firewall protected, you have to open the selected TCP port on server.
 
-Use the right mouse button over the history graphs to configure the visibility of graphs (popup menu).
+Just use the right mouse button over the history graphs, to configure the visibility of graphs (popup menu).
 
 **If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
 

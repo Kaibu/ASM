@@ -77,10 +77,9 @@ If your server is firewall protected, you have to open the selected TCP port on 
 Use RMB over value/progressbar area to configure user interface (popup menu).   
 Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).
 
-In **asm.ini** you can configure the object counting interval in seconds,   
-*objectcountinterval=0* (default) deactivates object counting (saving some cpu cycles).  
+In **asm.ini** you can configure the object counting interval in seconds, *objectcountinterval=0* (default) deactivates object counting (saving some cpu cycles).    
 
-**If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
+**If you prefer to run your DS instance(s) as service, you have to start ASM with admin rights**     
 
 *ENJOY :)*     
 

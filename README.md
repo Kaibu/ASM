@@ -99,4 +99,4 @@ Changelog:
 11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
 15.07.2013 counter for allMissionObjects added, helps to check if cleanup routines works                  
 31.07.2013 object counting interval, configurable in **asm.ini** [seconds], set *objectcountinterval=0* to deactivate (default)          
-31.08.2013 userinterface improvments, use **popup-menu** to check it out (thanks zach72 for ideas)    
+31.08.2013 userinterface improvements, use **popup-menu** to check it out (thanks zach72 for ideas)    

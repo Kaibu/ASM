@@ -74,7 +74,11 @@ Example for client configuration: `ArmaServerMonitor.exe -client -h201.178.1.102
 ASM starts as client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
 If your server is firewall protected, you have to open the selected TCP port on server.
 
-Just use the right mouse button over the history graphs, to configure the visibility of graphs (popup menu).
+Use RMB over value/progressbar area to configure user interface (popup menu).   
+Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).
+
+In **asm.ini** you can configure the object counting interval in seconds,   
+*objectcountinterval=0* (default) deactivates object counting (saving some cpu cycles).  
 
 **If you prefer to run your DS instance(s) as service, you have to start ArmaServerMonitor with admin rights**     
 
@@ -98,5 +102,5 @@ Changelog:
 09.07.2013 some performance related improvements          
 11.07.2013 profilName now displayed additional to missionName; forced=1 -> preInit=1 in cfgFunctions      
 15.07.2013 counter for allMissionObjects added, helps to check if cleanup routines works                  
-31.07.2013 object counting interval, configurable in **asm.ini** [seconds], set *objectcountinterval=0* to deactivate (default)          
+31.07.2013 object counting interval, configurable in **asm.ini** [seconds], set *objectcountinterval=0* to deactivate          
 31.08.2013 userinterface improvements, use **popup-menu** to check it out (thanks zach72 for ideas)    

@@ -1,0 +1,13 @@
+... this is a experimental replacement for armas default memory allocator.
+It is designed to work on 64bit OS with at least 8GB RAM. 
+
+
+HOW TO USE:
+
+Copy tbbmalloc.dll in your arma3/dll directory.
+append -malloc=tbbmalloc to your arma 3 start line.
+
+tbbmalloc is using RAM in large pages (2048kB instead of 4kB).
+This require the page lock privilege for the arma user.
+
+Make sure your arma user account has this privilege set (gpedit) and start arma with administrator rights.

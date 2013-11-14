@@ -104,3 +104,5 @@ Changelog:
 31.07.2013 object counting interval, configurable in **asm.ini** [seconds], set *objectcountinterval=0* to deactivate          
 31.08.2013 userinterface improvements, use **popup-menu** to check it out (thanks zach72 for ideas)    
 22.10.2013 UI settings saved/restored to/from registry at session end/start      
+14.11.2013 **FPS,CPS,FPSmin** graph changed to **linear scale**, MEM bar scale to max. 4GB now            
+

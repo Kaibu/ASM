@@ -7,7 +7,7 @@ HOW TO USE:
 Copy tbbmalloc.dll in your arma3/dll directory.
 append -malloc=tbbmalloc to your arma 3 start line.
 
-tbbmalloc is using RAM in large pages (2048kB instead of 4kB, 2000 pages are preallocated at arma process start).
+tbbmalloc is using RAM in large pages (2048kB instead of 4kB, 1000 pages are preallocated at arma process start).
 
 The use of large pages require the page lock privilege for the arma user.
 

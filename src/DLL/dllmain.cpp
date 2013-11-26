@@ -8,7 +8,6 @@ DWORD InstanceID;
 ARMA_SERVER_INFO *ArmaServerInfo = NULL;
 LARGE_INTEGER PCF, PCS;
 char options[SMALSTRINGSIZE] = "";
-DWORD LE;
 
 void Init()
 {
@@ -34,7 +33,7 @@ void Init()
 	QueryPerformanceCounter(&PCS);
 
 	GetPrivateProfileString("ASM", "objectcountinterval", "0", &options[0], SMALSTRINGSIZE - 1, ".\\asm.ini"); 
-	LE = GetLastError();
+
 }
 
 void Finit()

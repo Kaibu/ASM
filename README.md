@@ -13,7 +13,7 @@ Propertys:
 	- very simple, compact and solid design
 	- almost no influence to cpu load
 	- easy to use (mini addon)
-	- customizable history graphs	
+	- customizable, moveable history graphs, up to 24h record to RAM (ringbuffer)	
 
 ----------
 
@@ -108,4 +108,4 @@ Changelog:
 22.10.2013 UI settings saved/restored to/from registry at session end/start      
 14.11.2013 **FPS,CPS,FPSmin** graph changed to **linear scale**, MEM bar scale to max. 4GB now    
 26.11.2013 Source of ASMdll.dll published on github        
-
+02.12.2013 historygraph extended to 86400 seconds (24h), record to RAM ringbuffer, scroll via LMB, timediv. via popup menu     

@@ -75,8 +75,8 @@ Example for client configuration: `ArmaServerMonitor.exe -client -h201.178.1.102
 ASM starts as client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
 If your server is firewall protected, you have to open the selected TCP port on server.
 
-You can activate the optional log feature, by adding **-l*****filenameprefix** to your ASM start line.   
-By adding a **-t*****interval** you can select the log interval in seconds (default 1).   
+You can activate the optional log feature, by adding -l*filenameprefix* to your ASM start line.   
+By adding a -t*interval* you can select the log interval in seconds (default 1).   
 
 Use RMB over value/progressbar area to configure user interface (popup menu).   
 Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).
@@ -113,5 +113,6 @@ Changelog:
 22.10.2013 UI settings saved/restored to/from registry at session end/start      
 14.11.2013 **FPS,CPS,FPSmin** graph changed to **linear scale**, MEM bar scale to max. 4GB now    
 26.11.2013 Source of ASMdll.dll published on github        
-02.12.2013 historygraph extended to 86400 seconds (24h), record to RAM ringbuffer, hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu     
-06.12.2013 log feature added (**-l*****filenameprefix**, **-t*****interval**)     
+02.12.2013 historygraph extended to 86400 seconds (24h), record to RAM ringbuffer,   
+hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu     
+06.12.2013 simple log feature added (-l*filenameprefix*, -t*interval*)     

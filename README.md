@@ -76,7 +76,11 @@ ASM starts as client and tries periodical to connect/read to/from your ASM  serv
 If your server is firewall protected, you have to open the selected TCP port on server.
 
 You can activate the optional log feature, by adding -lfilenameprefix to your ASM start line.   
-By adding a -tinterval you can select the log interval in seconds (default 1).   
+By adding a -tinterval you can select the log interval in seconds (default 1).
+Values are ordered like this (OBJ is optional, asm.ini):
+
+**TimeStamp|FPS|CPS|PL#|AIL|AIR|[OBJ]**
+   
 
 Use RMB over value/progressbar area to configure user interface (popup menu).   
 Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).

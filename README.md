@@ -119,4 +119,5 @@ Changelog:
 26.11.2013 Source of ASMdll.dll published on github        
 02.12.2013 historygraph extended to 86400 seconds (24h), record to RAM ringbuffer,   
 hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu     
-06.12.2013 simple log feature added (-lfilenameprefix, -tinterval)     
+06.12.2013 simple log feature added (-lfilenameprefix, -tinterval)   
+08.12.2013 fix: instance slot blocked, caused by arma server crash (full update required)         

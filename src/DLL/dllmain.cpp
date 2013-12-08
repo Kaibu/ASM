@@ -85,6 +85,7 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 				FPSMIN = strtol(&stopstring[1], &stopstring, 10);
 				ArmaServerInfo->SERVER_FPS =	FPS;
 				ArmaServerInfo->SERVER_FPSMIN =	FPSMIN;
+				ArmaServerInfo->TICK_COUNT = GetTickCount();
 				FlushViewOfFile(ArmaServerInfo, PAGESIZE);
 			}
 			return;
@@ -101,7 +102,7 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 				tnsec = (double)(PCE.QuadPart - PCS.QuadPart) / (double)PCF.QuadPart;
 
 				conditionNo =	strtol(&function[2], &stopstring, 10);			
-				ArmaServerInfo->FSM_CE_FREQ = conditionNo * 1000 / tnsec;
+				ArmaServerInfo->FSM_CE_FREQ = static_cast<int>(floor(conditionNo * 1000 / tnsec + 0.5));
 			
 				PCS = PCE;
 			}
@@ -151,9 +152,11 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 		{
 			if (FileMap) {
 				if (ArmaServerInfo == NULL) {
+					DWORD DeadTimeout = GetTickCount() - 10000;
 					for (InstanceID = 0 ; InstanceID < MAX_ARMA_INSTANCES ; InstanceID++) {
 						ArmaServerInfo = (ARMA_SERVER_INFO*)((DWORD)FileMap + (InstanceID * PAGESIZE));
-						if(ArmaServerInfo->PID == 0) {
+						if((ArmaServerInfo->PID == 0) || (ArmaServerInfo->TICK_COUNT < DeadTimeout)) {
+							ArmaServerInfo->TICK_COUNT = DeadTimeout + 10000;
 							ArmaServerInfo->PID = GetCurrentProcessId();
 							memcpy(ArmaServerInfo->PROFILE, &function[2], SMALSTRINGSIZE-1);
 							ArmaServerInfo->PROFILE[SMALSTRINGSIZE-1] = 0;

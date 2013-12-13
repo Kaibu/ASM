@@ -20,8 +20,7 @@ Propertys:
 
 Currently able to monitor the following values:
 
-	- PID process ID of the server instance
-	- OBJ number of all objects in current mission (allMissionObjects)
+	- OC[0..2] three independent, customizable "counter" (.sqf based)  
 	- MEM Amount of allocated physical memory
 	- FPS (on a server this means simulation cycles per second)
 	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
@@ -37,7 +36,7 @@ Currently able to monitor the following values:
 **Arma Server Monitor** consists of 3 components:
 
 	fn_ASM.fsm 				- Reports some internal performance states from arma server (or HC)
-	ASMdll.dll 				- Interfaces to ArmaServerMonitor.exe via shared memory
+	ASMdll.dll 				- Interfaces to ArmaServerMonitor.exe via shared memory (MMF)
 	ArmaServerMonitor.exe 	- The Monitor itself reads from MMF and displays the values
 	
 -------
@@ -51,10 +50,22 @@ By watching this graphs you can **easily spot lags** on your server, without bei
 Alongside to the well known FPS (frames per second), an very interesting value **CPS** is introduced here.    
 **CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`. You can realize this **CPS** value as the reciprocal of the current "minimal response delay" of local AI in the running mission.    
 
-By watching the number of mission-objects **OBJ**, you can check if your cleanup-routine is working well.    
-( to enable object counting, set *objectcountinterval* in asm.ini to a value > 0 [sec] )
+You can now watch up to three different number values, returned by free configurable .sqf code pieces.
+To enable this counters, set **objectcountintervalX** in asm.ini to a value > 0 [sec] and add an .sqf code string to **objectcountcommandX** entry in asm.ini (see example).      
+By watching the number of several mission-objects via **OCX**, you can check if your cleanup-routine is working well and what objects are loading your server.     
 
-**Additional**, it is now possible to **connect** to `Arma Server Monitor` **from remote** via TCP.   
+asm.ini example:
+
+    [ASM]
+    objectcountinterval0=30
+    objectcountinterval1=60
+    objectcountinterval2=0
+    objectcountcommand0=count entities ""All"";
+    objectcountcommand1=count vehicles;
+    objectcountcommand2=count allMissionObjects ""All"";
+       
+    
+**Additional**, it is possible to **connect** to `Arma Server Monitor` **from remote** via TCP.   
 
 ----------
 
@@ -77,16 +88,15 @@ If your server is firewall protected, you have to open the selected TCP port on 
 
 You can activate the optional log feature, by adding -lfilenameprefix to your ASM start line.   
 By adding a -tinterval you can select the log interval in seconds (default 1).
-Values are ordered like this (OBJ is optional, asm.ini):
+Values are ordered like this:
 
-**TimeStamp|FPS|CPS|PL#|AIL|AIR|[OBJ]**
+**TimeStamp|FPS|CPS|PL#|AIL|AIR|OC0|OC1|OC2**
    
 
 Use RMB over value/progressbar area to configure user interface (popup menu).   
 Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).
 Use LMB on history graph to adjust the offset in 24h ringbuffer.
 
-In **asm.ini** you can configure the object counting interval in seconds, *objectcountinterval=0* (default) deactivates object counting (saving some cpu cycles).    
 
 **If you prefer to run your DS instance(s) as service, you have to start ASM with admin rights**     
 
@@ -120,4 +130,5 @@ Changelog:
 02.12.2013 historygraph extended to 86400 seconds (24h), record to RAM ringbuffer,   
 hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu     
 06.12.2013 simple log feature added (-lfilenameprefix, -tinterval)   
-08.12.2013 fix: instance slot blocked, caused by arma server crash (full update required)         
+08.12.2013 fix: instance slot blocked, caused by arma server crash (full update required)      
+13.12.2013 three **customizable object counter** added (set interval and .sqf command in asm.ini)      

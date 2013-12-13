@@ -7,7 +7,13 @@ HANDLE hProcess;
 DWORD InstanceID;
 ARMA_SERVER_INFO *ArmaServerInfo = NULL;
 LARGE_INTEGER PCF, PCS;
-char options[SMALSTRINGSIZE] = "";
+char OCI0[SMALSTRINGSIZE] = "0";
+char OCI1[SMALSTRINGSIZE] = "0";
+char OCI2[SMALSTRINGSIZE] = "0";
+char OCC0[FUNCTIONSIZE] = "";
+char OCC1[FUNCTIONSIZE] = "";
+char OCC2[FUNCTIONSIZE] = "";
+
 
 void Init()
 {
@@ -32,8 +38,18 @@ void Init()
 	QueryPerformanceFrequency(&PCF);
 	QueryPerformanceCounter(&PCS);
 
-	GetPrivateProfileString("ASM", "objectcountinterval", "0", &options[0], SMALSTRINGSIZE - 1, ".\\asm.ini"); 
-
+	GetPrivateProfileString("ASM", "objectcountinterval0", "0", &OCI0[0], SMALSTRINGSIZE - 1, ".\\asm.ini"); 
+	GetPrivateProfileString("ASM", "objectcountinterval1", "0", &OCI1[0], SMALSTRINGSIZE - 1, ".\\asm.ini"); 
+	GetPrivateProfileString("ASM", "objectcountinterval2", "0", &OCI2[0], SMALSTRINGSIZE - 1, ".\\asm.ini"); 
+	GetPrivateProfileString("ASM", "objectcountcommand0", "", &OCC0[0], FUNCTIONSIZE - 1, ".\\asm.ini"); 
+	GetPrivateProfileString("ASM", "objectcountcommand1", "", &OCC1[0], FUNCTIONSIZE - 1, ".\\asm.ini"); 
+	GetPrivateProfileString("ASM", "objectcountcommand2", "", &OCC2[0], FUNCTIONSIZE - 1, ".\\asm.ini");
+	OutputDebugStringA(&OCI0[0]);
+	OutputDebugStringA(&OCI1[0]);
+	OutputDebugStringA(&OCI2[0]);
+	OutputDebugStringA(&OCC0[0]);
+	OutputDebugStringA(&OCC1[0]);
+	OutputDebugStringA(&OCC2[0]);
 }
 
 void Finit()
@@ -138,12 +154,32 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 			return;
 		}
 
-	case '4':// OBJECTCOUNT update 
+	case '4':// OBJ_COUNT_0 update 
 		{
 			if (FileMap) {
-				unsigned int objs;
-				objs = strtol(&function[2], &stopstring, 10);			
-				ArmaServerInfo->OBJ_COUNT = objs;
+				unsigned obj;
+				obj = strtol(&function[2], &stopstring, 10);			
+				ArmaServerInfo->OBJ_COUNT_0 = obj;
+			}
+			return;
+		}
+
+	case '5':// OBJ_COUNT_1 update 
+		{
+			if (FileMap) {
+				unsigned obj;
+				obj = strtol(&function[2], &stopstring, 10);			
+				ArmaServerInfo->OBJ_COUNT_1 = obj;
+			}
+			return;
+		}
+
+	case '6':// OBJ_COUNT_2 update 
+		{
+			if (FileMap) {
+				unsigned obj;
+				obj = strtol(&function[2], &stopstring, 10);			
+				ArmaServerInfo->OBJ_COUNT_2 = obj;
 			}
 			return;
 		}
@@ -167,7 +203,8 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 				} else { ArmaServerInfo->MEM = 0;}
 				FlushViewOfFile(ArmaServerInfo, PAGESIZE);
 			}
-			sprintf_s( output, SMALSTRINGSIZE, "%s", options);
+			sprintf_s(output, OUTPUTSIZE, "_ASM_OPT=[%s,%s,%s,\"%s\",\"%s\",\"%s\"];", OCI0, OCI1, OCI2, OCC0, OCC1, OCC2);
+			OutputDebugString(output);
 			return;
 		}
 

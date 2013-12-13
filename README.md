@@ -1,4 +1,4 @@
-![Arma Server Monitor](picture/ASM.PNG)
+![](picture/ASM.png)
 
 #Arma Server Monitor#
 

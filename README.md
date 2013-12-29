@@ -102,7 +102,10 @@ Use LMB on history graph to adjust the offset in 24h ringbuffer.
 
 *ENJOY :)*     
 
-Feel free to use the code of this little project, maybe as a start for your own projects.
+Feel free to use the from this little project, maybe as a start for your own projects.
+
+Additional hint: to avoid @ASM listing in arma server browser, just install ASM.pbo in a3\addons folder.    
+
 
 ----------
 

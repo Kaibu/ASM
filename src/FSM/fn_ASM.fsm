@@ -1,32 +1,38 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, ASM">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ASM">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"wait",2,250,-75.000000,-350.000000,25.000000,-300.000000,0.000000,"wait"};
-item1[] = {"fps",4,218,50.000000,-350.000000,150.000000,-300.000000,0.000000,"fps"};
+item1[] = {"fps",4,218,50.000000,-425.000000,150.000000,-375.000000,0.000000,"fps"};
 item2[] = {"init",0,250,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
-item3[] = {"first",4,4314,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
-item4[] = {"units",4,218,-75.000000,-275.000000,25.000000,-225.000000,2.000000,"units"};
-item5[] = {"mission",4,218,-200.000000,-350.000000,-100.000000,-300.000000,4.000000,"mission"};
+item3[] = {"first",4,218,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
+item4[] = {"units",4,218,50.000000,-275.000000,150.000000,-225.000000,2.000000,"units"};
+item5[] = {"mission",4,218,-200.000000,-425.000000,-100.000000,-375.000000,6.000000,"mission"};
 item6[] = {"finit",1,250,-75.000000,-650.000000,25.000000,-600.000000,0.000000,"finit"};
 item7[] = {"already",4,218,-75.000000,-575.000000,25.000000,-525.000000,1.000000,"already"};
-item8[] = {"cps",4,218,50.000000,-275.000000,150.000000,-225.000000,1.000000,"cps"};
-item9[] = {"objects",4,218,-200.000000,-275.000000,-100.000000,-225.000000,3.000000,"objects"};
+item8[] = {"cps",4,218,50.000000,-350.000000,150.000000,-300.000000,1.000000,"cps"};
+item9[] = {"object0",4,218,-75.000000,-275.000000,25.000000,-225.000000,3.000000,"object0"};
+item10[] = {"object1",4,218,-200.000000,-275.000000,-100.000000,-225.000000,4.000000,"object1"};
+item11[] = {"object2",4,218,-200.000000,-350.000000,-100.000000,-300.000000,5.000000,"object2"};
 link0[] = {0,1};
 link1[] = {0,4};
 link2[] = {0,5};
 link3[] = {0,8};
 link4[] = {0,9};
-link5[] = {1,0};
-link6[] = {2,3};
-link7[] = {2,7};
-link8[] = {3,0};
-link9[] = {4,0};
-link10[] = {5,0};
-link11[] = {7,6};
-link12[] = {8,0};
-link13[] = {9,0};
-globals[] = {25.000000,1,0,0,0,640,480,1,18,6316128,1,-226.963837,216.618301,-183.463211,-674.792053,864,957,1};
-window[] = {2,-1,-1,-32000,-32000,810,44,1066,44,3,881};
+link5[] = {0,10};
+link6[] = {0,11};
+link7[] = {1,0};
+link8[] = {2,3};
+link9[] = {2,7};
+link10[] = {3,0};
+link11[] = {4,0};
+link12[] = {5,0};
+link13[] = {7,6};
+link14[] = {8,0};
+link15[] = {9,0};
+link16[] = {10,0};
+link17[] = {11,0};
+globals[] = {25.000000,1,0,0,0,640,480,1,20,6316128,1,-226.963837,216.618301,-183.463211,-674.792053,864,957,1};
+window[] = {2,-1,-1,-32000,-32000,898,132,1154,132,3,881};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -45,7 +51,7 @@ class FSM
         /*%FSM<LINK "mission">*/
         class mission
         {
-          priority = 4.000000;
+          priority = 6.000000;
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextMiss)"/*%FSM</CONDITION""">*/;
@@ -54,19 +60,51 @@ class FSM
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "objects">*/
-        class objects
+        /*%FSM<LINK "object2">*/
+        class object2
+        {
+          priority = 5.000000;
+          to="wait";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 2) > 0) then {" \n
+           "	_oc2 = call _OBJECT_COUNT_COMMAND2;" \n
+           "	""ASMdll"" callExtension format [""6:%1"", _oc2];" \n
+           "};" \n
+           "" \n
+           "_NextObj2 = diag_TickTime + _INTERVAL_OBJ2;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "object1">*/
+        class object1
+        {
+          priority = 4.000000;
+          to="wait";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 1) > 0) then {" \n
+           "	_oc1 = call _OBJECT_COUNT_COMMAND1;" \n
+           "	""ASMdll"" callExtension format [""5:%1"", _oc1];" \n
+           "};" \n
+           "" \n
+           "_NextObj1 = diag_TickTime + _INTERVAL_OBJ1;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "object0">*/
+        class object0
         {
           priority = 3.000000;
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if (_countObjects) then {" \n
-           "	_MissObj = count allMissionObjects ""All"";" \n
-           "	""ASMdll"" callExtension format [""4:%1"", _MissObj];" \n
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 0) > 0) then {" \n
+           "	_oc0 = call _OBJECT_COUNT_COMMAND0;" \n
+           "	""ASMdll"" callExtension format [""4:%1"", _oc0];" \n
            "};" \n
            "" \n
-           "_NextObj 	= diag_TickTime + _INTERVAL_OBJ;" \n
+           "_NextObj0 = diag_TickTime + _INTERVAL_OBJ0;" \n
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -120,11 +158,12 @@ class FSM
       name = "init";
       init = /*%FSM<STATEINIT""">*/"diag_log (""ASM.fsm started"");" \n
        "// options for ASM" \n
-       "_options = [];" \n
+       "_ASM_OPT = [0,0,0,"""","""",""""];" \n
        "" \n
-       "// count Objects or not" \n
-       "_countObjects = false;" \n
-       "_countObjectsInterval = ""0"";" \n
+       "// objectcounter" \n
+       "_oc0 = 0;" \n
+       "_oc1 = 0;" \n
+       "_oc2 = 0;" \n
        "" \n
        "// variable for counting the number of condition evaluations" \n
        "_c = 0;" \n
@@ -139,16 +178,22 @@ class FSM
        "_INTERVAL_FPS = 1;" \n
        "_INTERVAL_CPS = 4;" \n
        "_INTERVAL_UNI = 10;" \n
-       "_INTERVAL_OBJ = 30;" \n
+       "_INTERVAL_OBJ0 = 30;" \n
+       "_INTERVAL_OBJ1 = 31;" \n
+       "_INTERVAL_OBJ2 = 32;" \n
+       "" \n
        "_INTERVAL_MISS = 60;" \n
        "" \n
-       "_NextFPS = diag_TickTime;" \n
-       "_NextCPS = diag_TickTime + 2;" \n
+       "_NextFPS  = diag_TickTime;" \n
+       "_NextCPS  = diag_TickTime + 2;" \n
        "_NextUni 	= diag_TickTime;" \n
        "_NextMiss 	= diag_TickTime;" \n
-       "_NextObj 	= diag_TickTime;" \n
+       "_NextObj0	= diag_TickTime;" \n
+       "_NextObj1	= diag_TickTime;" \n
+       "_NextObj2	= diag_TickTime;" \n
        "" \n
-       "_units =[];"/*%FSM</STATEINIT""">*/;
+       "_units =[];" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -170,8 +215,17 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(isnil (""ASMRunning""))"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// register instance, occupy one MMF slot for PID" \n
-           "_countObjectsInterval = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
-           "if (_countObjectsInterval == ""0"") then {_countObjects = false;} else {_countObjects = true; _INTERVAL_OBJ = parseNumber _countObjectsInterval};" \n
+           "//_countObjectsInterval = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
+           "_output = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
+           "call compile _output;" \n
+           "" \n
+           "if ((_ASM_OPT select 0) > 0) then {_INTERVAL_OBJ0 = _ASM_OPT select 0};" \n
+           "if ((_ASM_OPT select 1) > 0) then {_INTERVAL_OBJ1 = _ASM_OPT select 1};" \n
+           "if ((_ASM_OPT select 2) > 0) then {_INTERVAL_OBJ2 = _ASM_OPT select 2};" \n
+           "" \n
+           "_OBJECT_COUNT_COMMAND0 = compile (_ASM_OPT select 3);" \n
+           "_OBJECT_COUNT_COMMAND1 = compile (_ASM_OPT select 4);" \n
+           "_OBJECT_COUNT_COMMAND2 = compile (_ASM_OPT select 5);" \n
            "" \n
            "ASMRunning = true;"/*%FSM</ACTION""">*/;
         };

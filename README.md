@@ -41,7 +41,7 @@ Currently able to monitor the following values:
 	
 -------
 
-This tool is very helpful to monitor your server under load, to spot bad coded parts in your mission/mod.    
+This tool can be very helpful to monitor your server under load, to spot bad coded parts in your mission/mod.    
 It will give you an impression, how well your server/mission scale with player/AI/object numbers.
 
 Additional to the history graph of FPS value, now the value **FPSmin** is drawed as a graph.
@@ -54,7 +54,7 @@ You can now watch up to three different number values, returned by free configur
 To enable this counters, set **objectcountintervalX** in asm.ini to a value > 0 [sec] and add an .sqf code string to **objectcountcommandX** entry in asm.ini (see example).      
 By watching the number of several mission-objects via **OCX**, you can check if your cleanup-routine is working well and what objects are loading your server.     
 
-asm.ini example:
+asm.ini example (default):
 
     [ASM]
     objectcountinterval0=30
@@ -91,6 +91,9 @@ By adding a -tinterval you can select the log interval in seconds (default 1).
 Values are ordered like this:
 
 **TimeStamp|FPS|CPS|PL#|AIL|AIR|OC0|OC1|OC2**
+
+To support monitors of different width, there is a **-wxxx** command line parameter, to set the width of the history graph in pixels/seconds.     
+Should be set to a multiple of 60, or better of 300. Default is 900 pixels (**-w900**).   
    
 
 Use RMB over value/progressbar area to configure user interface (popup menu).   
@@ -102,7 +105,7 @@ Use LMB on history graph to adjust the offset in 24h ringbuffer.
 
 *ENJOY :)*     
 
-Feel free to use the from this little project, maybe as a start for your own projects.
+Feel free to use the source code from this little project, maybe as a start for your own projects.
 
 Additional hint: to avoid @ASM listing in arma server browser, just install ASM.pbo in a3\addons folder.    
 
@@ -114,7 +117,6 @@ Changelog:
 01.06.2013 Fixed: instance occupied additional slot at mission change    
 02.06.2013 Changed bar graphs for CPS & FPS to **logarithmic scale** to show states more intuitive   
 03.06.2013 Added **history graphs**, customizable (individual visibility, update interval), transparency switch    
-05.06.2013 Finished ... or not ...  
 08.06.2013 Custom build for use with DS running as service added   
 11.06.2013 Fixed: AI was not counted correctly    
 13.06.2013 running DS as **service** now merged in default build (custom build removed)    
@@ -134,4 +136,6 @@ Changelog:
 hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu     
 06.12.2013 simple log feature added (-lfilenameprefix, -tinterval)   
 08.12.2013 fix: instance slot blocked, caused by arma server crash (full update required)      
-13.12.2013 three **customizable object counter** added (set interval and .sqf command in asm.ini)      
+13.12.2013 three **customizable object counter** added (set interval and .sqf command in asm.ini)   
+08.02.2014 variable hints, vertical grid lines and a **-w** command line switch (history width in pixels) added   
+      

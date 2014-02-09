@@ -96,16 +96,28 @@ To support monitors of different width, there is a **-wxxx** command line parame
 Should be set to a multiple of 60, or better of 300. Default is 900 pixels (**-w900**).   
    
 
+----------
 Use RMB over value/progressbar area to configure user interface (popup menu).   
-Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).
-Use LMB on history graph to adjust the offset in 24h ringbuffer.
+Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).   
+Use LMB on history graph to adjust the offset in 24h ringbuffer, double click resets offset to zero.
 
+----------
+command line **params**:    
+
+	s   configure ASM as server (-s, default)
+	n   allow n clients to connect (-n1, default)
+	c   configure ASM as client (-c)
+	h	hostaddress to bind or to connect to (-h127.0.0.1, default)	
+	p	port to listen or to connect to (-p24000, default)
+	l   prefix for and activation of logfile (-lASMlog)
+	t   interval for logging in seconds(-t1, default)
+	w	width of historygraph in pixels/samples (-w900, default)
 
 **If you prefer to run your DS instance(s) as service, you have to start ASM with admin rights**     
 
 *ENJOY :)*     
 
-Feel free to use the source code from this little project, maybe as a start for your own projects.
+Feel free to use the source code of ASMdll.dll, maybe as a start for your own projects.
 
 Additional hint: to avoid @ASM listing in arma server browser, just install ASM.pbo in a3\addons folder.    
 

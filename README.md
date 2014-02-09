@@ -44,17 +44,19 @@ Currently able to monitor the following values:
 This tool can be very helpful to monitor your server under load, to spot bad coded parts in your mission/mod.    
 It will give you an impression, how well your server/mission scale with player/AI/object numbers.
 
-Additional to the history graph of FPS value, now the value **FPSmin** is drawed as a graph.
-By watching this graphs you can **easily spot lags** on your server, without being in game.
+Additional to the history graph of FPS value, now the value **FPSmin** is drawed as a graph.   
+By watching this graphs, you can **easily spot lags** on your server, without being in game.
 
-Alongside to the well known FPS (frames per second), an very interesting value **CPS** is introduced here.    
-**CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`. You can realize this **CPS** value as the reciprocal of the current "minimal response delay" of local AI in the running mission.    
+Alongside to the well known FPS (frames per second), an very interesting value, **CPS**, is introduced here.    
+**CPS** is expressed by **condition** **evalations** per **second** and measured from an reference condition in `fn_ASM.fsm`.    
+You can realize this **CPS** value as the reciprocal of the current "minimal response delay" of local AI in the running mission.    
 
-You can now watch up to three different number values, returned by free configurable .sqf code pieces.
-To enable this counters, set **objectcountintervalX** in asm.ini to a value > 0 [sec] and add an .sqf code string to **objectcountcommandX** entry in asm.ini (see example).      
-By watching the number of several mission-objects via **OCX**, you can check if your cleanup-routine is working well and what objects are loading your server.     
+You can now watch up to three different number values, returned by free configurable .sqf code pieces.   
+To enable this counters, set **objectcountintervalX** in asm.ini to a value > 0 [sec] and add an .sqf code string to     
+**objectcountcommandX** entry in asm.ini (see example). By watching the number of several mission-objects via **OCX**,    
+you can check if your cleanup-routine is working well and what objects are loading your server.     
 
-asm.ini example (default):
+example **asm.ini** (default):
 
     [ASM]
     objectcountinterval0=30
@@ -63,9 +65,6 @@ asm.ini example (default):
     objectcountcommand0=count entities ""All"";
     objectcountcommand1=count vehicles;
     objectcountcommand2=count allMissionObjects ""All"";
-       
-    
-**Additional**, it is possible to **connect** to `Arma Server Monitor` **from remote** via TCP.   
 
 ----------
 
@@ -77,6 +76,7 @@ Add **-mod=@ASM** to your server (or HC) launch params.
 
 Run `ArmaServerMonitor.exe` from what directory you want, to monitor all your server (or HC) instances locally.
 
+Additional, it is possible to **connect** to `Arma Server Monitor` **from remote** via TCP.   
 To watch your server from a remote device, you need an ASM instance on that device too and to configure it per start params as client.     
 Default start params for `ArmaServerMonitor.exe` are: `-server -n1 -h127.0.0.1 -p24000`   
 This means, ASM starts as monitoring server and listens at TCP port 24000, max. allowed remote clients = 1.
@@ -86,23 +86,17 @@ Example for client configuration: `ArmaServerMonitor.exe -client -h201.178.1.102
 ASM starts as client and tries periodical to connect/read to/from your ASM  server at `201.178.1.102:24000`.   
 If your server is firewall protected, you have to open the selected TCP port on server.
 
-You can activate the optional log feature, by adding -lfilenameprefix to your ASM start line.   
+You can activate the **optional log feature**, by adding -lfilenameprefix to your ASM start line.   
 By adding a -tinterval you can select the log interval in seconds (default 1).
 Values are ordered like this:
 
 **TimeStamp|FPS|CPS|PL#|AIL|AIR|OC0|OC1|OC2**
 
 To support monitors of different width, there is a **-wxxx** command line parameter, to set the width of the history graph in pixels/seconds.     
-Should be set to a multiple of 60, or better of 300. Default is 900 pixels (**-w900**).   
+This value should be set to a multiple of 60, or better of 300. Default is 900 pixels (**-w900**).   
    
-
-----------
-Use RMB over value/progressbar area to configure user interface (popup menu).   
-Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).   
-Use LMB on history graph to adjust the offset in 24h ringbuffer, double click resets offset to zero.
-
-----------
-command line **params**:    
+---
+**command line params**:    
 
 	s   configure ASM as server (-s, default)
 	n   allow n clients to connect (-n1, default)
@@ -113,16 +107,24 @@ command line **params**:
 	t   interval for logging in seconds(-t1, default)
 	w	width of historygraph in pixels/samples (-w900, default)
 
-**If you prefer to run your DS instance(s) as service, you have to start ASM with admin rights**     
+---
 
-*ENJOY :)*     
+Use RMB over value/progressbar area to configure user interface (popup menu).   
+Use RMB over the history graphs, to configure the visibility of individual graphs (popup menu).   
+Use LMB on history graph to adjust the offset in 24h ringbuffer, double click resets offset to zero.   
+
+---
+
+**If you prefer to run your DS instance(s) as service, you have to start ASM with admin rights**     
 
 Feel free to use the source code of ASMdll.dll, maybe as a start for your own projects.
 
 Additional hint: to avoid @ASM listing in arma server browser, just install ASM.pbo in a3\addons folder.    
 
+*ENJOY :)*     
 
-----------
+
+---
 
 Changelog:    
 01.06.2013 Changed the install/launch method to **mini-addon** (thanks terox for inspiration)    

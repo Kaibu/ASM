@@ -106,6 +106,7 @@ This value should be set to a multiple of 60, or better of 300. Default is 900 p
 	l   prefix for and activation of logfile (-lASMlog)
 	t   interval for logging in seconds(-t1, default)
 	w	width of historygraph in pixels/samples (-w900, default)
+	b	enable bolder history graph lines, larger font for variables (-b)
 
 ---
 

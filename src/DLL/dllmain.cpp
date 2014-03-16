@@ -44,12 +44,6 @@ void Init()
 	GetPrivateProfileString("ASM", "objectcountcommand0", "", &OCC0[0], FUNCTIONSIZE - 1, ".\\asm.ini"); 
 	GetPrivateProfileString("ASM", "objectcountcommand1", "", &OCC1[0], FUNCTIONSIZE - 1, ".\\asm.ini"); 
 	GetPrivateProfileString("ASM", "objectcountcommand2", "", &OCC2[0], FUNCTIONSIZE - 1, ".\\asm.ini");
-	OutputDebugStringA(&OCI0[0]);
-	OutputDebugStringA(&OCI1[0]);
-	OutputDebugStringA(&OCI2[0]);
-	OutputDebugStringA(&OCC0[0]);
-	OutputDebugStringA(&OCC1[0]);
-	OutputDebugStringA(&OCC2[0]);
 }
 
 void Finit()
@@ -148,8 +142,7 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 	case '3':// MISSION update 
 		{
 			if (FileMap) {
-				memcpy(ArmaServerInfo->MISSION, &function[2], SMALSTRINGSIZE-1);
-				ArmaServerInfo->MISSION[SMALSTRINGSIZE-1] = 0;
+				strcpy_s(ArmaServerInfo->MISSION, SMALSTRINGSIZE, &function[2]);
 			}
 			return;
 		}
@@ -194,8 +187,7 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 						if((ArmaServerInfo->PID == 0) || (ArmaServerInfo->TICK_COUNT < DeadTimeout)) {
 							ArmaServerInfo->TICK_COUNT = DeadTimeout + 10000;
 							ArmaServerInfo->PID = GetCurrentProcessId();
-							memcpy(ArmaServerInfo->PROFILE, &function[2], SMALSTRINGSIZE-1);
-							ArmaServerInfo->PROFILE[SMALSTRINGSIZE-1] = 0;
+							strcpy_s(ArmaServerInfo->PROFILE, SMALSTRINGSIZE, &function[2]);
 							break;
 						}
 					}
@@ -204,7 +196,6 @@ extern "C" __declspec(dllexport) void __stdcall RVExtension(char *output, int ou
 				FlushViewOfFile(ArmaServerInfo, PAGESIZE);
 			}
 			sprintf_s(output, OUTPUTSIZE, "_ASM_OPT=[%s,%s,%s,\"%s\",\"%s\",\"%s\"];", OCI0, OCI1, OCI2, OCC0, OCC1, OCC2);
-			OutputDebugString(output);
 			return;
 		}
 

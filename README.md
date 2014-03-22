@@ -21,13 +21,16 @@ Propertys:
 Currently able to monitor the following values:
 
 	- OC[0..2] three independent, customizable "counter" (.sqf based)  
-	- MEM Amount of allocated physical memory
-	- FPS (on a server this means simulation cycles per second)
-	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
-	- CPS Condition-evaluation per Second (rel. to AI response delay, VM load)
 	- PL# Number of alive player units
 	- AIL Number of alive server local AI units
 	- AIR Number of alive AI units on connected machines (remote)
+	- FPS (on a server this means simulation cycles per second)
+	- FPSmin (the minimum FPS of the last 16 cycles, hist. graph only)
+	- CPS Condition-evaluation per Second (rel. to AI response delay, VM load)
+	- MEM Amount of allocated physical memory
+	- NTI Network Traffic Incoming [kByte/s]
+	- NTO Network Traffic Incoming [kByte/s]
+	- DIR DIsk Read [kByte/s]
 	- Name of the currently played mission (missionName)
 	- Name of the instance profile (profileName)
 
@@ -155,4 +158,5 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 08.02.2014 variable hints, vertical grid lines and a **-w** command line switch (history width in pixels) added   
 15.02.2014 'bold'mode added, use additional -b param in commandline to activate   
 23.02.2014 sampling interval (1 second) now synced via timeGetTime(), to minimize longtime drift   
+22.03.2014 added API monitored values NTI, NTO, DIR, fixed: logging continues even if mission was stopped     
       

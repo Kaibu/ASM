@@ -156,7 +156,8 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 08.12.2013 fix: instance slot blocked, caused by arma server crash (full update required)      
 13.12.2013 three **customizable object counter** added (set interval and .sqf command in asm.ini)   
 08.02.2014 variable hints, vertical grid lines and a **-w** command line switch (history width in pixels) added   
-15.02.2014 'bold'mode added, use additional -b param in commandline to activate   
+15.02.2014 'bold'mode added, use additional **-b** param in commandline to activate   
 23.02.2014 sampling interval (1 second) now synced via timeGetTime(), to minimize longtime drift   
 22.03.2014 added API monitored values NTI, NTO, DIR, fixed: logging continues even if mission was stopped     
+04.04.2014 fixed: AIR values sometimes incorrect calculated     
       

@@ -160,4 +160,5 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 23.02.2014 sampling interval (1 second) now synced via timeGetTime(), to minimize longtime drift   
 22.03.2014 added API monitored values NTI, NTO, DIR, fixed: logging continues even if mission was stopped     
 04.04.2014 fixed: AIR values sometimes incorrect calculated     
-      
+26.04.2014 fixed: enableAPImonitoring causes double slot usage     
+     

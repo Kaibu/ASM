@@ -29,7 +29,7 @@ Currently able to monitor the following values:
 	- CPS Condition-evaluation per Second (rel. to AI response delay, VM load)
 	- MEM Amount of allocated physical memory
 	- NTI Network Traffic Incoming [kByte/s]
-	- NTO Network Traffic Incoming [kByte/s]
+	- NTO Network Traffic Outgoing [kByte/s]
 	- DIR DIsk Read [kByte/s]
 	- Name of the currently played mission (missionName)
 	- Name of the instance profile (profileName)

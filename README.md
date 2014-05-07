@@ -62,6 +62,7 @@ you can check if your cleanup-routine is working well and what objects are loadi
 example **asm.ini** (default):
 
     [ASM]
+    enableAPImonitoring=1
     objectcountinterval0=30
     objectcountinterval1=60
     objectcountinterval2=0
@@ -161,4 +162,6 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 22.03.2014 added API monitored values NTI, NTO, DIR, fixed: logging continues even if mission was stopped     
 04.04.2014 fixed: AIR values sometimes incorrect calculated     
 26.04.2014 fixed: enableAPImonitoring causes double slot usage     
+28.04.2014 fix: NTI/NTO, works now with A2 (enableAPImonitoring=2, thanks Viba, for reporting and testing)    
+
      

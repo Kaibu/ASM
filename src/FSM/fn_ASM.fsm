@@ -3,9 +3,9 @@
 /*
 item0[] = {"wait",2,250,-75.000000,-350.000000,25.000000,-300.000000,0.000000,"wait"};
 item1[] = {"fps",4,218,50.000000,-425.000000,150.000000,-375.000000,0.000000,"fps"};
-item2[] = {"init",0,250,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
+item2[] = {"init",0,4346,-75.000000,-500.000000,25.000000,-450.000000,0.000000,"init"};
 item3[] = {"first",4,218,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"first"};
-item4[] = {"units",4,4314,50.000000,-275.000000,150.000000,-225.000000,2.000000,"units"};
+item4[] = {"units",4,218,50.000000,-275.000000,150.000000,-225.000000,2.000000,"units"};
 item5[] = {"mission",4,218,-200.000000,-425.000000,-100.000000,-375.000000,6.000000,"mission"};
 item6[] = {"finit",1,250,-75.000000,-650.000000,25.000000,-600.000000,0.000000,"finit"};
 item7[] = {"already",4,218,-75.000000,-575.000000,25.000000,-525.000000,1.000000,"already"};
@@ -32,7 +32,7 @@ link15[] = {9,0};
 link16[] = {10,0};
 link17[] = {11,0};
 globals[] = {25.000000,1,0,0,0,640,480,1,20,6316128,1,-226.963837,216.618301,-183.463211,-674.792053,864,957,1};
-window[] = {2,-1,-1,-1,-1,854,88,1110,88,3,881};
+window[] = {2,-1,-1,-1,-1,986,220,1242,220,3,881};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -157,6 +157,16 @@ class FSM
     {
       name = "init";
       init = /*%FSM<STATEINIT""">*/"diag_log (""ASM.fsm started"");" \n
+       "// check for enforced profileName, A2" \n
+       "_profileName = ""default"";" \n
+       "if ((count _this) >  0) then {" \n
+       "	if ((_this select 0) == ""preInit"") then {" \n
+       "		_profileName = profileName;" \n
+       "	} else {" \n
+       "		_profileName = _this select 0;" \n
+       "	}" \n
+       "};" \n
+       "" \n
        "// options for ASM" \n
        "_ASM_OPT = [0,0,0,"""","""",""""];" \n
        "" \n
@@ -215,8 +225,7 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(isnil (""ASMRunning""))"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// register instance, occupy one MMF slot for PID" \n
-           "//_countObjectsInterval = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
-           "_output = ""ASMdll"" callExtension format [""9:%1"", profileName];" \n
+           "_output = ""ASMdll"" callExtension format [""9:%1"", _profileName];" \n
            "call compile _output;" \n
            "" \n
            "if ((_ASM_OPT select 0) > 0) then {_INTERVAL_OBJ0 = _ASM_OPT select 0};" \n
@@ -249,7 +258,7 @@ class FSM
   initState="init";
   finalStates[] =
   {
-    "finit",
+    "finit"
   };
 };
 /*%FSM</COMPILE>*/

@@ -55,7 +55,7 @@ class FSM
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextMiss)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""3:%1"",  missionName];" \n
+          action=/*%FSM<ACTION""">*/"""asmdll"" callExtension format [""3:%1"",  missionName];" \n
            "_NextMiss 	= diag_TickTime + _INTERVAL_MISS;" \n
            ""/*%FSM</ACTION""">*/;
         };
@@ -69,7 +69,7 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj2)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 2) > 0) then {" \n
            "	_oc2 = call _OBJECT_COUNT_COMMAND2;" \n
-           "	""ASMdll"" callExtension format [""6:%1"", _oc2];" \n
+           "	""asmdll"" callExtension format [""6:%1"", _oc2];" \n
            "};" \n
            "" \n
            "_NextObj2 = diag_TickTime + _INTERVAL_OBJ2;" \n
@@ -85,7 +85,7 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj1)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 1) > 0) then {" \n
            "	_oc1 = call _OBJECT_COUNT_COMMAND1;" \n
-           "	""ASMdll"" callExtension format [""5:%1"", _oc1];" \n
+           "	""asmdll"" callExtension format [""5:%1"", _oc1];" \n
            "};" \n
            "" \n
            "_NextObj1 = diag_TickTime + _INTERVAL_OBJ1;" \n
@@ -101,7 +101,7 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextObj0)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"if ((_ASM_OPT select 0) > 0) then {" \n
            "	_oc0 = call _OBJECT_COUNT_COMMAND0;" \n
-           "	""ASMdll"" callExtension format [""4:%1"", _oc0];" \n
+           "	""asmdll"" callExtension format [""4:%1"", _oc0];" \n
            "};" \n
            "" \n
            "_NextObj0 = diag_TickTime + _INTERVAL_OBJ0;" \n
@@ -121,7 +121,7 @@ class FSM
            "_locAIs = {local _x} count _units;" \n
            "_remAIs = {(!local _x) && (!isPlayer _x)} count _units;" \n
            "" \n
-           """ASMdll"" callExtension format [""2:%1:%2:%3"", _Players, _locAIs, _remAIs];" \n
+           """asmdll"" callExtension format [""2:%1:%2:%3"", _Players, _locAIs, _remAIs];" \n
            "_NextUni 	= diag_TickTime + _INTERVAL_UNI;" \n
            ""/*%FSM</ACTION""">*/;
         };
@@ -133,7 +133,7 @@ class FSM
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextCPS)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""1:%1"", _c];" \n
+          action=/*%FSM<ACTION""">*/"""asmdll"" callExtension format [""1:%1"", _c];" \n
            "_NextCPS = diag_TickTime +  _INTERVAL_CPS;" \n
            "_c = 0;"/*%FSM</ACTION""">*/;
         };
@@ -145,7 +145,7 @@ class FSM
           to="wait";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime >= _NextFPS)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"""ASMdll"" callExtension format [""0:%1:%2"", round (diag_fps*1000),round (diag_fpsmin*1000)];" \n
+          action=/*%FSM<ACTION""">*/"""asmdll"" callExtension format [""0:%1:%2"", round (diag_fps*1000),round (diag_fpsmin*1000)];" \n
            "_NextFPS = diag_TickTime +  _INTERVAL_FPS;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -225,7 +225,7 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(isnil (""ASMRunning""))"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// register instance, occupy one MMF slot for PID" \n
-           "_output = ""ASMdll"" callExtension format [""9:%1"", _profileName];" \n
+           "_output = ""asmdll"" callExtension format [""9:%1"", _profileName];" \n
            "call compile _output;" \n
            "" \n
            "if ((_ASM_OPT select 0) > 0) then {_INTERVAL_OBJ0 = _ASM_OPT select 0};" \n

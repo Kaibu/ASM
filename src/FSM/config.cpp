@@ -1,12 +1,12 @@
 class CfgPatches
 {
-	class ASM
+	class asm
 	{
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"A3_Functions_F"};
-		fileName = "ASM.pbo";
+		fileName = "asm.pbo";
 		author = "Fred41";
 	};
 };
@@ -16,8 +16,8 @@ class cfgFunctions
 	{
 		class ArmaServerMonitor
 		{
-			file = "ASM";
-			class ASM
+			file = "asm";
+			class asm
 			{
 				ext = ".fsm";
 				preInit = 1;

@@ -168,6 +168,5 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 22.05.2014 removed old debug code from ASMdll.dll, DIR-value counting related fix    
 24.05.2014 profile prefix based slot selection added, usage: **-name=xxwhatever'', where 'xx' is the prefered ASM slot (zero based)     
 23.07.2014 changed library name for callextension commands, in fn_ASM.fsm, to lowercase (thx Killswitch, for hint)    
-
-
-     
+29.08.2014 good news: **KillSwitch** has made a native linux library and server application for ASM °°    
+14.12.2014 current date added to log file name     

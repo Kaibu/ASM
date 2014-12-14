@@ -166,7 +166,7 @@ hor.scroll:LMB, reset:dbl.click,   timediv. via popup menu
 28.04.2014 fix: NTI/NTO, works now with A2 (enableAPImonitoring=2, thanks Viba, for reporting and testing)    
 14.05.2014 for more then 4 instances (up to 16) a new commandline param, -o is introduced (for 4 blocks, of 4 arma server instances each)    
 22.05.2014 removed old debug code from ASMdll.dll, DIR-value counting related fix    
-24.05.2014 profile prefix based slot selection added, usage: **-name=xxwhatever'', where 'xx' is the prefered ASM slot (zero based)     
+24.05.2014 profile prefix based slot selection added, usage: **-name=xxwhatever**, where 'xx' is the prefered ASM slot (zero based)     
 23.07.2014 changed library name for callextension commands, in fn_ASM.fsm, to lowercase (thx Killswitch, for hint)    
 29.08.2014 good news: **KillSwitch** has made a native linux library and server application for ASM °°    
 14.12.2014 current date added to log file name     

@@ -1,3 +1,7 @@
+Project terminated.
+This little project is closed now (no updates, no support anymore).
+
+
 ![](picture/ASM.png)
 
 #Arma Server Monitor#
